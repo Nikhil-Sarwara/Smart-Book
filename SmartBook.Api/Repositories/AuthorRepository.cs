@@ -1,6 +1,5 @@
 using SmartBook.Database.Data;
 using SmartBook.Database.Models;
-using SmartBook.Api.Repositories;
 
 namespace SmartBook.Api.Repositories
 {
