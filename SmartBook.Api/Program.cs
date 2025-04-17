@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SmartBook.Api.Repositories; // Make sure this using directive is present
 using SmartBook.Database.Data;
 using SmartBook.Domain.Models;
 
@@ -18,6 +19,17 @@ internal class Program
         // Configure the ApplicationDbContext for Entity Framework Core
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+        // Register your repositories
+        builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        builder.Services.AddScoped<IBookRepository, BookRepository>();
+        builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+        builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
+        builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<ILoanRepository, LoanRepository>();
+        builder.Services.AddScoped<IReadingProgressRepository, ReadingProgressRepository>();
+        builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 
         // Configure ASP.NET Core Identity
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<ApplicationDbContext>();
