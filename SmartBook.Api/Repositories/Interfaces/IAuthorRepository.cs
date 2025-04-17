@@ -1,10 +1,13 @@
 using SmartBook.Database.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SmartBook.Api.Repositories
 {
     public interface IAuthorRepository : IRepository<Author>
     {
-        // Add any specific methods for AuthorR entity here if needed
+        Task<IEnumerable<Author>> GetAuthorsByBookIdAsync(int bookId);
+        Task<IEnumerable<Book>> GetBooksByAuthorIdAsync(int authorId);
     }
 }
+

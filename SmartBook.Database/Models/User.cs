@@ -23,8 +23,8 @@ namespace SmartBook.Database.Models
 
         public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
 
-        public required ICollection<Loan> Loans { get; set; }
-        public required ICollection<ReadingProgress> ReadingProgresses { get; set; }
-        public required ICollection<Review> Reviews { get; set; }
+        public ICollection<Loan> Loans { get; set; }
+        public ICollection<ReadingProgress> ReadingProgresses { get; set; }
+        public ICollection<Review> Reviews { get; set; }
     }
 }
