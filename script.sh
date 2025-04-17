@@ -1,62 +1,44 @@
 #!/bin/bash
 
-# Script to create a Git repository, create a .gitignore file using dotnet-gitignore,
-# add all files, and create an initial commit.
+# Navigate to the root of your Smart Book project repository
+cd "$(dirname "$0")"
 
-echo "Starting Git repository initialization..."
+# Function to add and commit files
+commit_files() {
+  local commit_message="$1"
+  shift
+  local files=("$@")
 
-# --- Check and install dotnet-gitignore tool ---
-echo "Checking if dotnet-gitignore tool is installed..."
-if ! command -v dotnet-gitignore &> /dev/null
-then
-    echo "dotnet-gitignore tool not found. Attempting to install it globally..."
-    dotnet tool install --global dotnet-gitignore
-    if [ $? -ne 0 ]; then
-        echo "Error: Failed to install dotnet-gitignore. Please ensure you have .NET SDK installed and try installing it manually using 'dotnet tool install --global dotnet-gitignore'."
-        exit 1
+  if [ "${#files[@]}" -gt 0 ]; then
+    echo "Adding files: ${files[@]}"
+    git add "${files[@]}"
+    if [ $? -eq 0 ]; then
+      echo "Committing with message: \"$commit_message\""
+      git commit -m "$commit_message"
+      if [ $? -eq 0 ]; then
+        echo "Commit successful."
+      else
+        echo "Error during commit."
+      fi
+    else
+      echo "Error adding files."
     fi
-    echo "dotnet-gitignore tool installed successfully. You might need to open a new terminal session for it to be available in your PATH."
-else
-    echo "dotnet-gitignore tool is already installed."
-fi
+  else
+    echo "No files provided for commit: \"$commit_message\""
+  fi
+}
 
-# --- Create .gitignore file ---
-echo "Creating .gitignore file for the solution..."
-dotnet gitignore add visualstudio
-if [ $? -eq 0 ]; then
-    echo ".gitignore file created successfully."
-else
-    echo "Warning: Failed to create .gitignore file using dotnet-gitignore. You might need to create it manually."
-fi
+# Commit 1: Add Database Model Files
+commit_files "Add Database Model Files" "SmartBook.Database/Models/"
 
-# --- Initialize Git repository ---
-echo "Initializing Git repository..."
-git init
-if [ $? -eq 0 ]; then
-    echo "Git repository initialized successfully."
-else
-    echo "Error: Failed to initialize Git repository."
-    exit 1
-fi
+# Commit 2: Update ApplicationDbContext with DbSet and configurations
+commit_files "Update ApplicationDbContext with DbSet and configurations" "SmartBook.Database/Data/ApplicationDbContext.cs"
 
-# --- Add all files to the staging area ---
-echo "Adding all files to the staging area..."
-git add .
-if [ $? -eq 0 ]; then
-    echo "All files added to the staging area."
-else
-    echo "Error: Failed to add files to the staging area."
-    exit 1
-fi
+# Commit 3: Update ApplicationUser model
+commit_files "Update ApplicationUser model" "SmartBook.Domain/Models/ApplicationUser.cs"
 
-# --- Create the initial commit ---
-echo "Creating the initial commit..."
-git commit -m "Initial commit"
-if [ $? -eq 0 ]; then
-    echo "Initial commit created successfully."
-else
-    echo "Error: Failed to create the initial commit."
-    exit 1
-fi
+# Commit 4: Add bash scripts for model creation (assuming script.sh is one of them)
+commit_files "Add bash scripts for model creation" "script.sh"
 
-echo "Git repository setup complete."
+echo "Finished committing files. You might want to review the commits using 'git log'."
+echo "Note: The files in the 'SmartBook.Database/obj' directory are build artifacts and are generally not committed to Git. Consider adding a '.gitignore' file to exclude them."
