@@ -30,13 +30,13 @@ namespace SmartBook.Api.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public virtual void Update(T entity)
+        public async virtual void Update(T entity)
         {
             _dbContext.Set<T>().Update(entity);
             await _dbContext.SaveChangesAsync();
         }
 
-        public virtual void Delete(T entity)
+        public async virtual void Delete(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
             await _dbContext.SaveChangesAsync();
