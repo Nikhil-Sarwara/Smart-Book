@@ -5,6 +5,8 @@ namespace SmartBook.Api.Repositories
 {
     public interface IUserRepository : IRepository<User>
     {
-        // Add any specific methods for UserR entity here if needed
+        Task<User?> GetByUsernameAsync(string username);
+        Task<User?> GetByEmailAsync(string email);
+        Task<User?> GetByNameAsync(string name);
     }
 }

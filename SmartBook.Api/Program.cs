@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models; // Add this using statement
 using SmartBook.Api.Repositories;
 using SmartBook.Api.Services;
 using SmartBook.Database.Data;
@@ -18,7 +19,37 @@ public class Program
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(options =>
+        {
+            // Define the JWT Bearer security scheme
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Description =
+                    "JWT Authorization header using the Bearer scheme. " +
+                    "Enter 'Bearer' [space] and then your token in the text input below.\n\n" +
+                    "Example: 'Bearer 12345abcdef'",
+                Name = "Authorization",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer"
+            });
+
+            // Apply the security requirement globally to all operations
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[] {}
+                }
+            });
+        });
 
         // Configure the ApplicationDbContext for Entity Framework Core
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -80,7 +111,7 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseAuthentication(); // Add authentication middleware
-        app.UseAuthorization();  // Add authorization middleware
+        app.UseAuthorization();   // Add authorization middleware
 
         app.MapControllers();
 

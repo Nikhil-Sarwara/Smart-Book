@@ -183,3 +183,4 @@
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Api/obj/Debug/net9.0/SmartBook.Api.pdb
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Api/obj/Debug/net9.0/SmartBook.Api.genruntimeconfig.cache
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Api/obj/Debug/net9.0/ref/SmartBook.Api.dll
+/Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Api/bin/Debug/net9.0/BCrypt.Net-Next.dll
