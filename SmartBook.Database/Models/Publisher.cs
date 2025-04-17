@@ -9,10 +9,10 @@ namespace SmartBook.Database.Models
         public int PublisherId { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
-        public string Location { get; set; }
+        public required string Location { get; set; }
 
-        public ICollection<Book> Books { get; set; }
+        public required ICollection<Book> Books { get; set; }
     }
 }

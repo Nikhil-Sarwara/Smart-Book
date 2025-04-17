@@ -11,20 +11,20 @@ namespace SmartBook.Database.Models
         public int BookId { get; set; }
 
         [Required]
-        public string Title { get; set; }
+        public required string Title { get; set; }
 
-        public string ISBN { get; set; }
+        public required string ISBN { get; set; }
 
         public DateTime PublicationDate { get; set; }
 
         [ForeignKey("Publisher")]
         public int PublisherId { get; set; }
-        public Publisher Publisher { get; set; }
+        public required Publisher Publisher { get; set; }
 
-        public ICollection<BookGenre> BookGenres { get; set; }
-        public ICollection<BookAuthor> BookAuthors { get; set; }
-        public ICollection<Loan> Loans { get; set; }
-        public ICollection<ReadingProgress> ReadingProgresses { get; set; }
-        public ICollection<Review> Reviews { get; set; }
+        public required ICollection<BookGenre> BookGenres { get; set; }
+        public required ICollection<BookAuthor> BookAuthors { get; set; }
+        public required ICollection<Loan> Loans { get; set; }
+        public required ICollection<ReadingProgress> ReadingProgresses { get; set; }
+        public required ICollection<Review> Reviews { get; set; }
     }
 }

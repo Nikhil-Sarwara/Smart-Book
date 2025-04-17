@@ -1,44 +1,14 @@
 #!/bin/bash
 
-# Navigate to the root of your Smart Book project repository
-cd "$(dirname "$0")"
+# This script will add all changes (modified and untracked) and commit them
+# with the message "Add dummy data to the database".
 
-# Function to add and commit files
-commit_files() {
-  local commit_message="$1"
-  shift
-  local files=("$@")
+# Navigate three directories up to the root of the repository
 
-  if [ "${#files[@]}" -gt 0 ]; then
-    echo "Adding files: ${files[@]}"
-    git add "${files[@]}"
-    if [ $? -eq 0 ]; then
-      echo "Committing with message: \"$commit_message\""
-      git commit -m "$commit_message"
-      if [ $? -eq 0 ]; then
-        echo "Commit successful."
-      else
-        echo "Error during commit."
-      fi
-    else
-      echo "Error adding files."
-    fi
-  else
-    echo "No files provided for commit: \"$commit_message\""
-  fi
-}
+# Add all changes to the staging area
+git add .
 
-# Commit 1: Add Database Model Files
-commit_files "Add Database Model Files" "SmartBook.Database/Models/"
+# Commit the changes with the message
+git commit -m "Add dummy data to the database"
 
-# Commit 2: Update ApplicationDbContext with DbSet and configurations
-commit_files "Update ApplicationDbContext with DbSet and configurations" "SmartBook.Database/Data/ApplicationDbContext.cs"
-
-# Commit 3: Update ApplicationUser model
-commit_files "Update ApplicationUser model" "SmartBook.Domain/Models/ApplicationUser.cs"
-
-# Commit 4: Add bash scripts for model creation (assuming script.sh is one of them)
-commit_files "Add bash scripts for model creation" "script.sh"
-
-echo "Finished committing files. You might want to review the commits using 'git log'."
-echo "Note: The files in the 'SmartBook.Database/obj' directory are build artifacts and are generally not committed to Git. Consider adding a '.gitignore' file to exclude them."
+echo "Successfully added and committed changes with the message: 'Add dummy data to the database'"

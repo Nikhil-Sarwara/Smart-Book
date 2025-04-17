@@ -1,0 +1,39 @@
+{
+    "Resources": [
+        {
+            "Id": 1,
+            "Name": "Strategy Energy",
+            "Description": "American hotel leave modern best world easy.",
+            "Type": "Equipment",
+            "IsActive": false
+        },
+        {
+            "Id": 2,
+            "Name": "Success Why",
+            "Description": "Doctor street course ground.",
+            "Type": "Equipment",
+            "IsActive": true
+        },
+        {
+            "Id": 3,
+            "Name": "Three Girl",
+            "Description": "Team peace here the.",
+            "Type": "Equipment",
+            "IsActive": true
+        },
+        {
+            "Id": 4,
+            "Name": "Culture Sit",
+            "Description": "Buy evening according new.",
+            "Type": "Room",
+            "IsActive": false
+        },
+        {
+            "Id": 5,
+            "Name": "Human Thousand",
+            "Description": "Wall country identify feeling company ago.",
+            "Type": "Room",
+            "IsActive": true
+        }
+    ]
+}

@@ -10,10 +10,10 @@ namespace SmartBook.Database.Models
 
         [ForeignKey("Book")]
         public int BookId { get; set; }
-        public Book Book { get; set; }
+        public required Book Book { get; set; }
 
         [ForeignKey("Author")]
         public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public required Author Author { get; set; }
     }
 }

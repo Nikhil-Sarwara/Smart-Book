@@ -9,10 +9,10 @@ namespace SmartBook.Database.Models
         public int GenreId { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
-        public string Description { get; set; }
+        public required string Description { get; set; }
 
-        public ICollection<BookGenre> BookGenres { get; set; }
+        public required ICollection<BookGenre> BookGenres { get; set; }
     }
 }

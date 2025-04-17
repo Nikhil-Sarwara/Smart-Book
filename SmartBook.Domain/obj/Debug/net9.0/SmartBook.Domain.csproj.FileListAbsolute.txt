@@ -10,3 +10,4 @@
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Domain/obj/Debug/net9.0/refint/SmartBook.Domain.dll
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Domain/obj/Debug/net9.0/SmartBook.Domain.pdb
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Domain/obj/Debug/net9.0/ref/SmartBook.Domain.dll
+/Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Domain/obj/Debug/net9.0/SmartBook.Domain.sourcelink.json

@@ -9,10 +9,10 @@ namespace SmartBook.Database.Models
         public int AuthorId { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
-        public string Biography { get; set; }
+        public required string Biography { get; set; }
 
-        public ICollection<BookAuthor> BookAuthors { get; set; }
+        public required ICollection<BookAuthor> BookAuthors { get; set; }
     }
 }

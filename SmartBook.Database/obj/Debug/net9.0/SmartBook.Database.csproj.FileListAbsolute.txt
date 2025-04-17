@@ -15,3 +15,4 @@
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Database/obj/Debug/net9.0/SmartBook.Database.pdb
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Database/obj/Debug/net9.0/SmartBook.Database.genruntimeconfig.cache
 /Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Database/obj/Debug/net9.0/ref/SmartBook.Database.dll
+/Users/nikhilsarwara/Desktop/ASP.NET Core Projects/Smart Book/SmartBook.Database/obj/Debug/net9.0/SmartBook.Database.sourcelink.json
