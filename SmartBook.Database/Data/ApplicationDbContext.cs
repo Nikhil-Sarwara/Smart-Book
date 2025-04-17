@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore; // Add this using statement
 using Microsoft.EntityFrameworkCore;
 using SmartBook.Database.Models; // Make sure this namespace matches
+using SmartBook.Domain.Models; // Add this using statement
 
 namespace SmartBook.Database.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

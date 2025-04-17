@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartBook.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acb506dcedafd03775907029e6c159a77f137425")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06ff45a034444f6706c77f49165dcd7415620373")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartBook.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartBook.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

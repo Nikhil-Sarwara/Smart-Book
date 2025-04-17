@@ -1,10 +1,14 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SmartBook.Api.Repositories; // Make sure this using directive is present
+using Microsoft.IdentityModel.Tokens;
+using SmartBook.Api.Repositories;
+using SmartBook.Api.Services;
 using SmartBook.Database.Data;
 using SmartBook.Domain.Models;
+using System.Text;
 
-internal class Program
+public class Program
 {
     private static void Main(string[] args)
     {
@@ -20,6 +24,36 @@ internal class Program
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+        // Configure ASP.NET Core Identity
+        builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+            .AddEntityFrameworkStores<ApplicationDbContext>();
+
+        // Configure JWT Authentication
+        var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+        var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]);
+
+        builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false; // Set to true in production
+            options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = true,
+                ValidIssuer = jwtSettings["Issuer"],
+                ValidateAudience = true,
+                ValidAudience = jwtSettings["Audience"],
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero // Optional: Helps with token expiration issues
+            };
+        });
+
         // Register your repositories
         builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         builder.Services.AddScoped<IBookRepository, BookRepository>();
@@ -31,8 +65,8 @@ internal class Program
         builder.Services.AddScoped<IReadingProgressRepository, ReadingProgressRepository>();
         builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 
-        // Configure ASP.NET Core Identity
-        builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<ApplicationDbContext>();
+        // Register your authentication service
+        builder.Services.AddScoped<IAuthService, AuthService>();
 
         var app = builder.Build();
 
@@ -46,7 +80,7 @@ internal class Program
         app.UseHttpsRedirection();
 
         app.UseAuthentication(); // Add authentication middleware
-        app.UseAuthorization(); // Add authorization middleware
+        app.UseAuthorization();  // Add authorization middleware
 
         app.MapControllers();
 
