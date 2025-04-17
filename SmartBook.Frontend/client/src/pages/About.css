@@ -1,0 +1,60 @@
+/* About.css */
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; /* Adjust as needed */
+  padding: 30px;
+  background: linear-gradient(
+    135deg,
+    #e0e0e0,
+    #c0c0c0
+  ); /* Metallic silver gradient */
+  border: 1px solid #b0b0b0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 20px; /* Add some margin around the container */
+}
+
+.about-title {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 1px 1px #ddd;
+}
+
+.about-content {
+  max-width: 700px;
+  padding: 20px;
+  background-color: #f5fafa;
+  border: 1px solid #b0c4de;
+  border-radius: 8px;
+}
+
+.about-paragraph {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+/* Metallic Silver Old Style Oxygen Dual Tone Color - More specific elements */
+body {
+  background: linear-gradient(
+    to bottom right,
+    #d4d4d4,
+    #a9a9a9
+  ); /* Silver gradient */
+}
+
+.about-title {
+  /* Already set above */
+  color: #444; /* Slightly darker title */
+}
+
+.about-paragraph {
+  color: #333; /* Darker text for better readability */
+}
