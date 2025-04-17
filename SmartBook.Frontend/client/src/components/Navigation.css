@@ -1,0 +1,55 @@
+/* Home.css - Retro Brownish Navigation Bar */
+
+/* Import any necessary fonts (if you have them) */
+@font-face {
+  font-family: Chicago;
+  src: url("fonts/ChicagoFLF.woff") format("woff"); /* Adjust path if needed */
+  src: url("fonts/ChicagoFLF.woff2") format("woff2"); /* Adjust path if needed */
+}
+
+/* Override Bootstrap Styles and apply retro theme */
+.navbar {
+  background-color: #a0522d; /* Sienna brown for the navbar */
+  border-bottom: 4px solid #8b4513; /* Darker brown border */
+  box-shadow: 2px 2px 4px #333; /* Subtle shadow */
+  padding: 0.5rem 1rem;
+  font-family: "Inconsolata", Menlo, Chicago, Geneva; /* Retro font */
+  /* Retro Graphic - Subtle aged paper effect */
+  background-image: url("your-image-path/vintage-paper-texture.jpg"); /* Replace with your image path */
+  background-size: cover;
+  background-blend: multiply; /* Blend the color with the image */
+}
+
+.navbar-brand {
+  font-family: Chicago_12; /* Retro font from system.txt */
+  font-size: 1.5rem;
+  color: #f0e68c !important; /* Khaki/Gold color, override Bootstrap's !important */
+  text-shadow: 1px 1px #000;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 1rem; /* Add spacing between nav items */
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  color: #eee !important; /* Off-white color, override Bootstrap's !important */
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+  border: 2px solid transparent; /* Add transparent border */
+  border-radius: 4px; /* Add border radius */
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #8b4513; /* Darker brown on hover */
+  color: #fff !important;
+  border-color: #eee; /* Change border color on hover */
+}
+
+.navbar-toggler {
+  border-color: #8b4513;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Custom toggle icon color */
+}
