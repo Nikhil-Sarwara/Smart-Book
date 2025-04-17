@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace SmartBook.Api.Repositories
 {
-    public interface IPublisherRepository : IRepository<Publisher>
+    public interface IPublisherRepository : IRepository<PublisherR>
     {
-        // Add any specific methods for Publisher entity here if needed
+        // Add any specific methods for PublisherR entity here if needed
     }
 }

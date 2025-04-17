@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace SmartBook.Api.Repositories
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface IBookRepository : IRepository<BookR>
     {
-        // Add any specific methods for Book entity here if needed
+        // Add any specific methods for BookR entity here if needed
     }
 }

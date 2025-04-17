@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace SmartBook.Api.Repositories
 {
-    public interface IReadingProgressRepository : IRepository<ReadingProgress>
+    public interface IReadingProgressRepository : IRepository<ReadingProgressR>
     {
-        // Add any specific methods for ReadingProgress entity here if needed
+        // Add any specific methods for ReadingProgressR entity here if needed
     }
 }

@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace SmartBook.Api.Repositories
 {
-    public interface ILoanRepository : IRepository<Loan>
+    public interface ILoanRepository : IRepository<LoanR>
     {
-        // Add any specific methods for Loan entity here if needed
+        // Add any specific methods for LoanR entity here if needed
     }
 }
