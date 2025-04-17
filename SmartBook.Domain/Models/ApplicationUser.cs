@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SmartBook.Domain.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        // You can add custom user properties here if needed
+        // Add any custom properties for your user here
+        public required string Name { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        // ... other properties
     }
 }
